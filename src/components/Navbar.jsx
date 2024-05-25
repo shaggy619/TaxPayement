@@ -27,7 +27,7 @@ const Navbar = () => {
   return (
     <header className="fixed w-full top-0 left-0 z-50">
       <div className="bg-primary text-white text-center py-2">
-        <p className="max-w-[90%] mx-auto">
+        <p className="max-w-[90%] mx-auto text-sm">
           Check Out the Updated Vehicle Tax Rates.{" "}
           <a
             href="https://www.autoncell.com/detail/news/tax-rate-vehicles-fiscal-year-2076-2077-province-1-7"

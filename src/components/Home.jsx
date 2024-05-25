@@ -1,15 +1,12 @@
 import React from "react";
 import { useEffect } from "react";
+import Hero from "./Hero";
 
 const Home = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-  return (
-    <div className="pt-44 min-h-screen">
-      <h2 className="text-center font-poppins">Home Component </h2>
-    </div>
-  );
+  return <Hero />;
 };
 
 export default Home;

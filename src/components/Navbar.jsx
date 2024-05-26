@@ -75,13 +75,13 @@ const Navbar = () => {
               Contact Us
             </Link>
             <Link
-              to="/signup"
+              to="/login"
               className="text-white border border-transparent bg-primary px-8 py-2 rounded hover:bg-secondary"
             >
               Login
             </Link>
             <Link
-              to="/login"
+              to="/signup"
               className="text-primary border border-primary bg-transparent px-8 py-2 rounded transition hover:border-primary hover:bg-primary hover:text-white"
             >
               Signup
@@ -140,7 +140,7 @@ const Navbar = () => {
           </Link>
           <div className="pl-4 pt-6">
             <Link
-              to="/signup"
+              to="/login"
               className="text-white border border-transparent bg-primary px-8 py-2 rounded hover:bg-secondary"
               onClick={closeMenu}
             >
@@ -149,7 +149,7 @@ const Navbar = () => {
           </div>
           <div className="pl-4 pt-8">
             <Link
-              to="/login"
+              to="/signup"
               className="text-primary border border-primary bg-white px-8 py-2 rounded hover:bg-secondary"
               onClick={closeMenu}
             >

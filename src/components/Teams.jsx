@@ -1,51 +1,8 @@
 import { FaFacebook, FaTwitter, FaLinkedin } from "react-icons/fa";
 import { motion } from "framer-motion";
 import { fadeIn } from "./varients";
-
+import { teamMembers } from "../data/TeamMembers";
 const Teams = () => {
-  const teamMembers = [
-    {
-      name: "Samyam Adhikari",
-      role: "Frontend Developer",
-      imgSrc: "/img/samyam.png",
-      social: {
-        facebook: "john.doe",
-        twitter: "john_doe",
-        linkedin: "john-doe",
-      },
-    },
-    {
-      name: "Ronish Prajapati",
-      role: "Backend Developer",
-      imgSrc: "https://spacema-dev.com/elevate/assets/images/team/1.jpg",
-      social: {
-        facebook: "jane.smith",
-        twitter: "jane_smith",
-        linkedin: "jane-smith",
-      },
-    },
-    {
-      name: "Sushant Luitel",
-      role: "Full Stack Developer",
-      imgSrc: "https://spacema-dev.com/elevate/assets/images/team/3.jpg",
-      social: {
-        facebook: "alex.johnson",
-        twitter: "alex_johnson",
-        linkedin: "alex-johnson",
-      },
-    },
-    {
-      name: "Srijan Ghimire",
-      role: "Project Manager",
-      imgSrc: "https://spacema-dev.com/elevate/assets/images/team/2.jpg",
-      social: {
-        facebook: "peter.johnson",
-        twitter: "peter_johnson",
-        linkedin: "peter-johnson",
-      },
-    },
-  ];
-
   return (
     <section id="our-team" className="bg-gray-100 py-12">
       <div className="w-[90%] mx-auto ">

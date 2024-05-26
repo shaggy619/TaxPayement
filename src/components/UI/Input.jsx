@@ -1,8 +1,8 @@
 import React from "react";
 
-const Input = ({ label, important, sx, error }) => {
+const Input = ({ label, important, sx, error, placeholder }) => {
   return (
-    <div>
+    <div className="my-4">
       <label
         htmlFor={label}
         className="opacity-75 ml-3 text-xl font-medium mr-1"
@@ -17,7 +17,7 @@ const Input = ({ label, important, sx, error }) => {
 
       <input
         type={"text"}
-        placeholder={label}
+        placeholder={placeholder}
         autoComplete="off"
         id={label}
         className="min-w-80 py-2 px-3 ml-3 rounded-sm bg-[#33303010] shadow-md focus:outline-none focus:border-cyan-400 focus:border-b-2"

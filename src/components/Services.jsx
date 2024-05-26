@@ -51,13 +51,13 @@ const services = [
 
 const ServiceCards = () => {
   return (
-    <>
+    <section className="py-12">
       <motion.div
         variants={fadeIn("down", 0.2)}
         initial="hidden"
         whileInView={"show"}
         viewport={{ once: true, amount: 0.2 }}
-        className="flex justify-center py-2"
+        className="flex justify-center pb-2"
       >
         <span class="text-primary font-bold text-2xl md:text-3xl relative inline-block stroke-current">
           Services
@@ -96,7 +96,7 @@ const ServiceCards = () => {
           </div>
         ))}
       </motion.div>
-    </>
+    </section>
   );
 };
 

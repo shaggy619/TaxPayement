@@ -2,6 +2,7 @@ import React from "react";
 import { useEffect } from "react";
 import Hero from "./Hero";
 import Services from "./Services";
+import Teams from "./Teams";
 
 const Home = () => {
   useEffect(() => {
@@ -11,6 +12,7 @@ const Home = () => {
     <>
       <Hero />
       <Services />
+      <Teams />
     </>
   );
 };

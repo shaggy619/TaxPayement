@@ -1,10 +1,21 @@
 import React from "react";
-import Input from "./UI/Input";
-import Login from "./LoginAndRegister/Login";
-import FormLayout from "./UI/FormLayout";
+
+import { useEffect } from "react";
+import Hero from "./Hero";
+import Services from "./Services";
+import Teams from "./Teams";
 
 const Home = () => {
-  return <div className="pt-44"></div>;
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  return (
+    <>
+      <Hero />
+      <Services />
+      <Teams />
+    </>
+  );
 };
 
 export default Home;

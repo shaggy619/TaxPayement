@@ -27,7 +27,7 @@ const Navbar = () => {
   return (
     <header className="fixed w-full top-0 left-0 z-50">
       <div className="bg-primary text-white text-center py-2">
-        <p className="max-w-[90%] mx-auto">
+        <p className="max-w-[90%] mx-auto text-sm">
           Check Out the Updated Vehicle Tax Rates.{" "}
           <a
             href="https://www.autoncell.com/detail/news/tax-rate-vehicles-fiscal-year-2076-2077-province-1-7"
@@ -75,13 +75,13 @@ const Navbar = () => {
               Contact Us
             </Link>
             <Link
-              to="/signup"
+              to="/login"
               className="text-white border border-transparent bg-primary px-8 py-2 rounded hover:bg-secondary"
             >
               Login
             </Link>
             <Link
-              to="/login"
+              to="/signup"
               className="text-primary border border-primary bg-transparent px-8 py-2 rounded transition hover:border-primary hover:bg-primary hover:text-white"
             >
               Signup
@@ -140,7 +140,7 @@ const Navbar = () => {
           </Link>
           <div className="pl-4 pt-6">
             <Link
-              to="/signup"
+              to="/login"
               className="text-white border border-transparent bg-primary px-8 py-2 rounded hover:bg-secondary"
               onClick={closeMenu}
             >
@@ -149,7 +149,7 @@ const Navbar = () => {
           </div>
           <div className="pl-4 pt-8">
             <Link
-              to="/login"
+              to="/signup"
               className="text-primary border border-primary bg-white px-8 py-2 rounded hover:bg-secondary"
               onClick={closeMenu}
             >

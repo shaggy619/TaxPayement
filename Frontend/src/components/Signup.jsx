@@ -92,18 +92,9 @@ const SignUp = () => {
             </div>
             <div className="flex flex-col items-center mt-8">
               <div className="flex-1 w-full mt-8">
-                <div className="flex flex-col items-center">
-                  <button className="flex items-center justify-center w-full max-w-xs py-3 font-medium text-gray-800 transition-all duration-300 ease-in-out bg-blue-100 rounded-lg shadow-sm focus:outline-none hover:shadow focus:shadow-sm focus:shadow-outline">
-                    <div className="p-1 bg-white rounded-full">
-                      <FcGoogle className="text-xl" />
-                    </div>
-                    <span className="ml-4">Sign Up with Google</span>
-                  </button>
-                </div>
-
                 <div className="my-12 text-center border-b">
                   <div className="inline-block px-2 text-sm font-medium leading-none tracking-wide text-gray-600 transform translate-y-1/2 bg-white">
-                    Or Sign Up with Email
+                    Sign Up with Email
                   </div>
                 </div>
                 <form>

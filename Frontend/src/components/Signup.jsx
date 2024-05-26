@@ -45,15 +45,25 @@ const SignUp = () => {
   const {
     register,
     clearErrors,
+    trigger,
     formState: { errors },
 
     watch,
   } = useForm({ resolver: yupResolver(schema), mode: "onBlur" });
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
-    const formData = watch();
-    console.log(formData);
+    const result = await trigger([
+      "name",
+      "email",
+      "panNumber",
+      "password",
+      "userType",
+    ]);
+    if (result) {
+      const formData = watch();
+      console.log(formData);
+    }
   }
 
   // useEffect(() => {

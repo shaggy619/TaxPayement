@@ -8,39 +8,15 @@ import { PiGenderFemaleBold } from "react-icons/pi";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
-import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import useCustomToast from "../hooks/useCustomToast";
+import { schema } from "./schema";
 const SignUp = () => {
+  const { successToast, errorToast } = useCustomToast();
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
-  const schema = yup.object().shape({
-    name: yup.string().required("Required"),
-    email: yup.string().required("Required").email("Invalid email Format"),
-    panNumber: yup
-      .string()
-      .required("Required")
-      .min(10, "PAN No. should be exactly 10 digits"),
-
-    password: yup
-      .string()
-      .required("Required")
-
-      .min(8, "Password should be at least 8 characters")
-      .matches(
-        /[a-z]/,
-        "Password must contain at least one lowercase character"
-      )
-      .matches(
-        /[A-Z]/,
-        "Password must contain at least one uppercase character"
-      ),
-    userType: yup
-      .string()
-      .required("Required")
-      .oneOf(["individual", "company", "family"], "Invalid Selection"),
-  });
 
   const {
     register,
@@ -63,6 +39,7 @@ const SignUp = () => {
     if (result) {
       const formData = watch();
       console.log(formData);
+      errorToast("API not working!! Check Console");
     }
   }
 

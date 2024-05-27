@@ -38,7 +38,7 @@ const Contact = () => {
           initial="hidden"
           whileInView={"show"}
           viewport={{ once: true, amount: 0.1 }}
-          className="text-3xl font-bold text-center mb-10 max-md:mb-8 max-md:mt-2"
+          className="text-3xl max-sm:text-2xl font-bold text-center mb-10 max-md:mb-8 max-md:mt-2"
         >
           Contact Us
         </motion.h2>

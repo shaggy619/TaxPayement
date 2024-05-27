@@ -11,61 +11,52 @@ const Login = () => {
   }, []);
   return (
     <section id="login">
-      <div className="min-h-screen bg-gray-100 text-gray-900 flex justify-center">
-        <div className="max-w-screen-xl m-0  bg-white shadow sm:rounded-lg flex justify-center flex-1">
-          <div className="lg:w-1/2 xl:w-5/12 p-6 sm:p-12">
+      <div className="flex justify-center min-h-screen text-gray-900 bg-gray-100">
+        <div className="flex justify-center flex-1 max-w-screen-xl m-0 bg-white shadow sm:rounded-lg">
+          <div className="p-6 lg:w-1/2 xl:w-5/12 sm:p-12">
             <div className="text-center">
               <Link to="/" className="inline-block">
-                <img src="/img/nepgov.png" className=" w-32 mx-auto" />
+                <img src="/img/nepgov.png" className="w-32 mx-auto " />
                 <h2 className="text-2xl font-medium text-primary">
                   Sawari Sadhan
                 </h2>
                 <p className="text-sm">Digital Tax Payment Gateway</p>
               </Link>
             </div>
-            <div className=" mt-8 flex flex-col items-center">
-              <div className="w-full flex-1 mt-8">
-                <div className="flex flex-col items-center">
-                  <button className="w-full max-w-xs font-medium shadow-sm rounded-lg py-3 bg-blue-100 text-gray-800 flex items-center justify-center transition-all duration-300 ease-in-out focus:outline-none hover:shadow focus:shadow-sm focus:shadow-outline">
-                    <div className="bg-white p-1 rounded-full">
-                      <FcGoogle className="text-xl" />
-                    </div>
-                    <span className="ml-4">Sign In with Google</span>
-                  </button>
-                </div>
-
-                <div className="my-12 border-b text-center">
-                  <div className="leading-none px-2 inline-block text-sm text-gray-600 tracking-wide font-medium bg-white transform translate-y-1/2">
-                    Or Sign In with Email
+            <div className="flex flex-col items-center mt-8 ">
+              <div className="flex-1 w-full mt-8">
+                <div className="my-12 text-center border-b">
+                  <div className="inline-block px-2 text-sm font-medium leading-none tracking-wide text-gray-600 transform translate-y-1/2 bg-white">
+                    Sign In with Email
                   </div>
                 </div>
 
-                <div className="mx-auto max-w-xs">
+                <div className="max-w-xs mx-auto">
                   <div className="relative">
                     <input
-                      className="w-full rounded-md border border-gray-200 bg-gray-100 py-3 px-6 pl-10 text-base placeholder-gray-500 text-gray-700 outline-none focus:border-primary focus:shadow-md focus:bg-white"
+                      className="w-full px-6 py-3 pl-10 text-base text-gray-700 placeholder-gray-500 bg-gray-100 border border-gray-200 rounded-md outline-none focus:border-primary focus:shadow-md focus:bg-white"
                       type="email"
                       placeholder="Email"
                     />
-                    <MdOutlineEmail className=" text-xl absolute top-1/2 transform -translate-y-1/2 left-3 text-gray-400" />
+                    <MdOutlineEmail className="absolute text-xl text-gray-400 transform -translate-y-1/2 top-1/2 left-3" />
                   </div>
 
                   <div className="relative mt-5">
                     <input
-                      className="w-full rounded-md border border-gray-200 bg-gray-100 py-3 px-6 pl-10 text-base placeholder-gray-500 text-gray-700 outline-none focus:border-primary focus:shadow-md focus:bg-white"
+                      className="w-full px-6 py-3 pl-10 text-base text-gray-700 placeholder-gray-500 bg-gray-100 border border-gray-200 rounded-md outline-none focus:border-primary focus:shadow-md focus:bg-white"
                       type="password"
                       placeholder="Password"
                     />
 
-                    <IoKeyOutline className=" text-xl absolute top-1/2 transform -translate-y-1/2 left-3 text-gray-400" />
+                    <IoKeyOutline className="absolute text-xl text-gray-400 transform -translate-y-1/2 top-1/2 left-3" />
                   </div>
-                  <div className="mt-2 pl-1">
-                    <Link className="text-primary text-sm underline">
+                  <div className="pl-1 mt-2">
+                    <Link className="text-sm underline text-primary">
                       Forgot Password?
                     </Link>
                   </div>
 
-                  <button className="mt-5 tracking-wide font-semibold bg-primary text-white w-full py-4 rounded-lg hover:bg-secondary transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none gap-2">
+                  <button className="flex items-center justify-center w-full gap-2 py-4 mt-5 font-semibold tracking-wide text-white transition-all duration-300 ease-in-out rounded-lg bg-primary hover:bg-secondary focus:shadow-outline focus:outline-none">
                     <svg
                       className="w-6 h-6 -ml-2"
                       fill="none"
@@ -80,7 +71,7 @@ const Login = () => {
                     </svg>
                     <span className="ml-">Sign In</span>
                   </button>
-                  <p className="mt-6 text-xs text-gray-600 text-center">
+                  <p className="mt-6 text-xs text-center text-gray-600">
                     I agree to abide by Sawari Sadhan{" "}
                     <a
                       href="#"
@@ -98,7 +89,7 @@ const Login = () => {
                     </a>
                   </p>
 
-                  <p className="mt-6 text-sm text-gray-600 text-center">
+                  <p className="mt-6 text-sm text-center text-gray-600">
                     Don't have an account?{" "}
                     <Link to="/signup" className="underline text-primary">
                       Sign Up
@@ -108,8 +99,8 @@ const Login = () => {
               </div>
             </div>
           </div>
-          <div className="flex-1 bg-blue-100 text-center hidden lg:flex">
-            <div className="m-12 xl:m-16 w-full flex items-center justify-center">
+          <div className="flex-1 hidden text-center bg-blue-100 lg:flex">
+            <div className="flex items-center justify-center w-full m-12 xl:m-16">
               <span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

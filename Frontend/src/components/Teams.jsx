@@ -4,7 +4,7 @@ import { fadeIn } from "./varients";
 import { teamMembers } from "../data/TeamMembers";
 const Teams = () => {
   return (
-    <section id="our-team" className="bg-gray-100 py-12">
+    <section id="our-team" className="py-12 bg-gray-100">
       <div className="w-[90%] mx-auto ">
         <motion.div
           variants={fadeIn("down", 0.2)}
@@ -16,14 +16,14 @@ const Teams = () => {
           <span class="text-primary font-bold text-2xl md:text-3xl relative inline-block stroke-current">
             Our Teams
             <svg
-              class="absolute -bottom-0.5 w-full max-h-1.5"
+              className="absolute -bottom-0.5 w-full max-h-1.5"
               viewBox="0 0 55 5"
               xmlns="http://www.w3.org/2000/svg"
               preserveAspectRatio="none"
             >
               <path
                 d="M0.652466 4.00002C15.8925 2.66668 48.0351 0.400018 54.6853 2.00002"
-                stroke-width="2"
+                strokeWidth="2"
               ></path>
             </svg>
           </span>
@@ -34,22 +34,22 @@ const Teams = () => {
           initial="hidden"
           whileInView={"show"}
           viewport={{ once: true, amount: 0.2 }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
+          className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4"
         >
           {teamMembers.map((member, index) => (
             <div
               key={index}
-              className="bg-white rounded-lg shadow-md p-6 my-6 text-center"
+              className="p-6 my-6 text-center bg-white rounded-lg shadow-md"
             >
               <div className="w-[200px] h-[200px] relative overflow-hidden rounded-full mx-auto">
                 <img
                   src={member.imgSrc}
                   alt={`Team Member ${index + 1}`}
-                  className="absolute top-0 left-0 w-full h-full object-cover"
+                  className="absolute top-0 left-0 object-cover w-full h-full"
                 />
               </div>
 
-              <h3 className="text-xl font-semibold my-2 text-primary">
+              <h3 className="my-2 text-xl font-semibold text-primary">
                 {member.name}
               </h3>
               <p className="text-gray-700">Role: {member.role}</p>
@@ -58,7 +58,7 @@ const Teams = () => {
                   href={`https://facebook.com/${member.social.facebook}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-700 mr-4 text-xl hover:text-primary"
+                  className="mr-4 text-xl text-gray-700 hover:text-primary"
                 >
                   <FaFacebook />
                 </a>
@@ -66,7 +66,7 @@ const Teams = () => {
                   href={`https://twitter.com/${member.social.twitter}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-700 mr-4 text-xl hover:text-primary"
+                  className="mr-4 text-xl text-gray-700 hover:text-primary"
                 >
                   <FaTwitter />
                 </a>
@@ -74,7 +74,7 @@ const Teams = () => {
                   href={`https://linkedin.com/in/${member.social.linkedin}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-700 text-xl hover:text-primary"
+                  className="text-xl text-gray-700 hover:text-primary"
                 >
                   <FaLinkedin />
                 </a>

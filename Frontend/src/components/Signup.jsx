@@ -5,24 +5,60 @@ import { FcGoogle } from "react-icons/fc";
 import { FiPhone } from "react-icons/fi";
 import { RxAvatar } from "react-icons/rx";
 import { PiGenderFemaleBold } from "react-icons/pi";
-
+import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
-
+import { yupResolver } from "@hookform/resolvers/yup";
+import useCustomToast from "../hooks/useCustomToast";
+import { schema } from "./schema";
 const SignUp = () => {
+  const { successToast, errorToast } = useCustomToast();
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  const {
+    register,
+    clearErrors,
+    trigger,
+    formState: { errors },
+
+    watch,
+  } = useForm({ resolver: yupResolver(schema), mode: "onBlur" });
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    const result = await trigger([
+      "name",
+      "email",
+      "panNumber",
+      "password",
+      "userType",
+    ]);
+    if (result) {
+      const formData = watch();
+      console.log(formData);
+      errorToast("API not working!! Check Console");
+    }
+  }
+
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     console.log(errors);
+  //   }, 2000);
+  // }, []);
+
   return (
     <section id="signup">
-      <div className="min-h-screen bg-gray-100 text-gray-900 flex justify-center">
-        <div className="max-w-screen-xl m-0  bg-white shadow sm:rounded-lg flex justify-center flex-1">
-          <div className="lg:w-1/2 xl:w-5/12 p-6 sm:p-12">
+      <div className="flex justify-center min-h-screen text-gray-900 bg-gray-100">
+        <div className="flex justify-center flex-1 max-w-screen-xl m-0 bg-white shadow sm:rounded-lg">
+          <div className="p-6 lg:w-1/2 xl:w-5/12 sm:p-12">
             <div className="text-center">
               <Link to="/" className="inline-block">
                 <img
                   src="/img/nepgov.png"
-                  className=" w-32 mx-auto"
+                  className="w-32 mx-auto "
                   alt="logo"
                 />
                 <h2 className="text-2xl font-medium text-primary">
@@ -31,125 +67,155 @@ const SignUp = () => {
                 <p className="text-sm">Digital Tax Payment Gateway</p>
               </Link>
             </div>
-            <div className="mt-8 flex flex-col items-center">
-              <div className="w-full flex-1 mt-8">
-                <div className="flex flex-col items-center">
-                  <button className="w-full max-w-xs font-medium shadow-sm rounded-lg py-3 bg-blue-100 text-gray-800 flex items-center justify-center transition-all duration-300 ease-in-out focus:outline-none hover:shadow focus:shadow-sm focus:shadow-outline">
-                    <div className="bg-white p-1 rounded-full">
-                      <FcGoogle className="text-xl" />
+            <div className="flex flex-col items-center mt-8">
+              <div className="flex-1 w-full mt-8">
+                <div className="my-12 text-center border-b">
+                  <div className="inline-block px-2 text-sm font-medium leading-none tracking-wide text-gray-600 transform translate-y-1/2 bg-white">
+                    Sign Up with Email
+                  </div>
+                </div>
+                <form>
+                  <div className="max-w-xs mx-auto">
+                    <div>
+                      <div className="relative mt-5">
+                        <input
+                          className="w-full px-6 py-3 pl-10 text-base text-gray-700 placeholder-gray-500 bg-gray-100 border border-gray-200 rounded-md outline-none focus:border-primary focus:shadow-md focus:bg-white"
+                          type="text"
+                          {...register("name")}
+                          onInput={() => clearErrors("name")}
+                          placeholder="Full Name"
+                        />
+                        <RxAvatar className="absolute text-xl text-gray-400 transform -translate-y-1/2 top-1/2 left-3" />
+                      </div>
+                      <p className={"error"}>{errors.name?.message}</p>
                     </div>
-                    <span className="ml-4">Sign Up with Google</span>
-                  </button>
-                </div>
 
-                <div className="my-12 border-b text-center">
-                  <div className="leading-none px-2 inline-block text-sm text-gray-600 tracking-wide font-medium bg-white transform translate-y-1/2">
-                    Or Sign Up with Email
-                  </div>
-                </div>
+                    <div className="relative mt-5">
+                      <input
+                        className="w-full px-6 py-3 pl-10 text-base text-gray-700 placeholder-gray-500 bg-gray-100 border border-gray-200 rounded-md outline-none focus:border-primary focus:shadow-md focus:bg-white"
+                        type="email"
+                        {...register("email")}
+                        onInput={() => clearErrors("email")}
+                        placeholder="Email"
+                      />
+                      <MdOutlineEmail className="absolute text-xl text-gray-400 transform -translate-y-1/2 top-1/2 left-3" />
+                    </div>
+                    <p className={"error"}>
+                      {errors.email && errors.email.message}
+                    </p>
 
-                <div className="mx-auto max-w-xs">
-                  <div className="relative mt-5">
+                    <div className="relative mt-5">
+                      <input
+                        className="w-full px-6 py-3 pl-10 text-base text-gray-700 placeholder-gray-500 bg-gray-100 border border-gray-200 rounded-md outline-none focus:border-primary focus:shadow-md focus:bg-white"
+                        type="tel"
+                        maxLength={10}
+                        {...register("panNumber")}
+                        onInput={(e) => {
+                          // This function ensures non-numeric characters are not entered
+                          e.target.value = e.target.value.replace(
+                            /[^0-9]/g,
+                            ""
+                          );
+                          clearErrors("panNumber");
+                        }}
+                        placeholder="PAN Number"
+                      />
+                      <FiPhone className="absolute text-xl text-gray-400 transform -translate-y-1/2 top-1/2 left-3" />
+                    </div>
+                    <p className={"error"}>
+                      {errors.panNumber && errors.panNumber.message}
+                    </p>
+
+                    <div className="relative mt-5">
+                      <input
+                        className="w-full px-6 py-3 pl-10 text-base text-gray-700 placeholder-gray-500 bg-gray-100 border border-gray-200 rounded-md outline-none focus:border-primary focus:shadow-md focus:bg-white"
+                        type="password"
+                        {...register("password")}
+                        onInput={() => clearErrors("password")}
+                        placeholder="Password"
+                      />
+                      <IoKeyOutline className="absolute text-xl text-gray-400 transform -translate-y-1/2 top-1/2 left-3" />
+                    </div>
+                    <p className={"error"}>
+                      {errors.password && errors.password.message}
+                    </p>
+
+                    {/* <div className="relative mt-5">
                     <input
-                      className="w-full rounded-md border border-gray-200 bg-gray-100 py-3 px-6 pl-10 text-base placeholder-gray-500 text-gray-700 outline-none focus:border-primary focus:shadow-md focus:bg-white"
-                      type="text"
-                      placeholder="Full Name"
-                    />
-                    <RxAvatar className=" text-xl absolute top-1/2 transform -translate-y-1/2 left-3 text-gray-400" />
-                  </div>
-
-                  <div className="relative mt-5">
-                    <input
-                      className="w-full rounded-md border border-gray-200 bg-gray-100 py-3 px-6 pl-10 text-base placeholder-gray-500 text-gray-700 outline-none focus:border-primary focus:shadow-md focus:bg-white"
-                      type="email"
-                      placeholder="Email"
-                    />
-                    <MdOutlineEmail className=" text-xl absolute top-1/2 transform -translate-y-1/2 left-3 text-gray-400" />
-                  </div>
-
-                  <div className="relative mt-5">
-                    <input
-                      className="w-full rounded-md border border-gray-200 bg-gray-100 py-3 px-6 pl-10 text-base placeholder-gray-500 text-gray-700 outline-none focus:border-primary focus:shadow-md focus:bg-white"
-                      type="tel"
-                      placeholder="Phone Number"
-                    />
-                    <FiPhone className=" text-xl absolute top-1/2 transform -translate-y-1/2 left-3 text-gray-400" />
-                  </div>
-
-                  <div className="relative mt-5">
-                    <input
-                      className="w-full rounded-md border border-gray-200 bg-gray-100 py-3 px-6 pl-10 text-base placeholder-gray-500 text-gray-700 outline-none focus:border-primary focus:shadow-md focus:bg-white"
-                      type="password"
-                      placeholder="Password"
-                    />
-                    <IoKeyOutline className=" text-xl absolute top-1/2 transform -translate-y-1/2 left-3 text-gray-400" />
-                  </div>
-
-                  <div className="relative mt-5">
-                    <input
-                      className="w-full rounded-md border border-gray-200 bg-gray-100 py-3 px-6 pl-10 text-base placeholder-gray-500 text-gray-700 outline-none focus:border-primary focus:shadow-md focus:bg-white"
+                      className="w-full px-6 py-3 pl-10 text-base text-gray-700 placeholder-gray-500 bg-gray-100 border border-gray-200 rounded-md outline-none focus:border-primary focus:shadow-md focus:bg-white"
                       type="password"
                       placeholder="Confirm Password"
                     />
-                    <IoKeyOutline className=" text-xl absolute top-1/2 transform -translate-y-1/2 left-3 text-gray-400" />
+                    <IoKeyOutline className="absolute text-xl text-gray-400 transform -translate-y-1/2 top-1/2 left-3" />
+                  </div> */}
+
+                    <div className="relative mt-5">
+                      <select
+                        {...register("userType")}
+                        onInput={() => clearErrors("userType")}
+                        className="w-full px-6 py-3 pl-10 text-base text-gray-700 placeholder-gray-500 bg-gray-100 border border-gray-200 rounded-md outline-none cursor-pointer focus:border-primary focus:shadow-md focus:bg-white"
+                      >
+                        <option value="">Select Type</option>
+                        <option value="individual">Individual</option>
+                        <option value="company">Company</option>
+                        <option value="family">Family</option>
+                      </select>
+                      <PiGenderFemaleBold className="absolute text-xl text-gray-400 transform -translate-y-1/2 top-1/2 left-3" />
+                    </div>
+                    <p className={"error"}>
+                      {errors.userType && errors.userType.message}
+                    </p>
+
+                    <button
+                      onClick={handleSubmit}
+                      className="flex items-center justify-center w-full gap-2 py-4 mt-5 font-semibold tracking-wide text-white transition-all duration-300 ease-in-out rounded-lg bg-primary hover:bg-secondary focus:shadow-outline focus:outline-none"
+                    >
+                      <svg
+                        className="w-6 h-6 -ml-2"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
+                        <circle cx="8.5" cy="7" r="4" />
+                        <path d="M20 8v6M23 11h-6" />
+                      </svg>
+                      <span className="ml-">Sign Up</span>
+                    </button>
+
+                    <p className="mt-6 text-xs text-center text-gray-600">
+                      By signing up, you agree to abide by Sawari Sadhan{" "}
+                      <a
+                        href="#"
+                        className="border-b border-gray-500 border-dotted"
+                      >
+                        Terms of Service
+                      </a>{" "}
+                      and its
+                      <a
+                        href="#"
+                        className="border-b border-gray-500 border-dotted"
+                      >
+                        {" "}
+                        Privacy Policy
+                      </a>
+                    </p>
+
+                    <p className="mt-6 text-sm text-center text-gray-600">
+                      Already have an account?{" "}
+                      <Link to="/login" className="underline text-primary">
+                        Log In
+                      </Link>
+                    </p>
                   </div>
-
-                  <div className="relative mt-5">
-                    <select className="w-full rounded-md border border-gray-200 bg-gray-100 py-3 px-6 pl-10 cursor-pointer text-base placeholder-gray-500 text-gray-700 outline-none focus:border-primary focus:shadow-md focus:bg-white">
-                      <option value="">Select Gender</option>
-                      <option value="male">Male</option>
-                      <option value="female">Female</option>
-                      <option value="other">Other</option>
-                    </select>
-                    <PiGenderFemaleBold className=" text-xl absolute top-1/2 transform -translate-y-1/2 left-3 text-gray-400" />
-                  </div>
-
-                  <button className="mt-5 tracking-wide font-semibold bg-primary text-white w-full py-4 rounded-lg hover:bg-secondary transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none gap-2">
-                    <svg
-                      className="w-6 h-6 -ml-2"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
-                      <circle cx="8.5" cy="7" r="4" />
-                      <path d="M20 8v6M23 11h-6" />
-                    </svg>
-                    <span className="ml-">Sign Up</span>
-                  </button>
-
-                  <p className="mt-6 text-xs text-gray-600 text-center">
-                    By signing up, you agree to abide by Sawari Sadhan{" "}
-                    <a
-                      href="#"
-                      className="border-b border-gray-500 border-dotted"
-                    >
-                      Terms of Service
-                    </a>{" "}
-                    and its
-                    <a
-                      href="#"
-                      className="border-b border-gray-500 border-dotted"
-                    >
-                      {" "}
-                      Privacy Policy
-                    </a>
-                  </p>
-
-                  <p className="mt-6 text-sm text-gray-600 text-center">
-                    Already have an account?{" "}
-                    <Link to="/login" className="underline text-primary">
-                      Log In
-                    </Link>
-                  </p>
-                </div>
+                </form>
               </div>
             </div>
           </div>
-          <div className="flex-1 bg-blue-100 text-center hidden lg:flex">
-            <div className="m-12 xl:m-16 w-full flex items-center justify-center">
+          <div className="flex-1 hidden text-center bg-blue-100 lg:flex">
+            <div className="flex items-center justify-center w-full m-12 xl:m-16">
               <span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

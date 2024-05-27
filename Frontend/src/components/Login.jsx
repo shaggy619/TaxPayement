@@ -18,14 +18,14 @@ const Login = () => {
               <Link to="/" className="inline-block">
                 <img src="/img/nepgov.png" className="w-32 mx-auto " />
                 <h2 className="text-2xl font-medium text-primary">
-                  Sawari Sadhan
+                  iTax Nepal
                 </h2>
                 <p className="text-sm">Digital Tax Payment Gateway</p>
               </Link>
             </div>
-            <div className="flex flex-col items-center mt-8 ">
-              <div className="flex-1 w-full mt-8">
-                <div className="my-12 text-center border-b">
+            <div className="flex flex-col items-center">
+              <div className="flex-1 w-full">
+                <div className="mb-12 mt-8 text-center border-b">
                   <div className="inline-block px-2 text-sm font-medium leading-none tracking-wide text-gray-600 transform translate-y-1/2 bg-white">
                     Sign In with Email
                   </div>
@@ -72,7 +72,7 @@ const Login = () => {
                     <span className="ml-">Sign In</span>
                   </button>
                   <p className="mt-6 text-xs text-center text-gray-600">
-                    I agree to abide by Sawari Sadhan{" "}
+                    I agree to abide by iTax Nepal{" "}
                     <a
                       href="#"
                       className="border-b border-gray-500 border-dotted"

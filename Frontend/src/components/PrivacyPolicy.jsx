@@ -2,20 +2,22 @@ import React from "react";
 import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { fadeIn } from "./varients";
+import Shape from "./Shape";
 
 const PrivacyPolicy = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
   return (
-    <div className="min-h-screen  py-12 px-6 lg:px-20 pt-40">
-      <div className="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-lg border border-slate-100 lg:px-16">
+    <div className="relative min-h-screen  py-12 px-6 lg:px-20 pt-40">
+      <Shape />
+      <div className="relative max-w-4xl mx-auto bg-white lg:p-16 p-8 rounded-lg shadow-lg border border-slate-100 lg:px-16">
         <motion.h2
           variants={fadeIn("down", 0.2)}
           initial="hidden"
           whileInView={"show"}
           viewport={{ once: true, amount: 0.2 }}
-          className="text-3xl font-bold text-center text-gray-900 mb-8"
+          className="text-3xl max-sm:text-2xl font-bold text-center text-gray-900 mb-8"
         >
           Privacy Policy
         </motion.h2>
@@ -26,7 +28,7 @@ const PrivacyPolicy = () => {
           viewport={{ once: true, amount: 0.2 }}
         >
           <div className="mb-6">
-            <h2 className="text-2xl font-semibold text-gray-800 mb-4">
+            <h2 className="text-2xl max-sm:text-xl font-semibold text-gray-800 mb-4">
               Introduction
             </h2>
             <p className="text-gray-700">
@@ -37,7 +39,7 @@ const PrivacyPolicy = () => {
           </div>
 
           <div className="mb-6">
-            <h2 className="text-2xl font-semibold text-gray-800 mb-4">
+            <h2 className="text-2xl max-sm:text-xl font-semibold text-gray-800 mb-4">
               Data Collection
             </h2>
             <p className="text-gray-700">
@@ -60,7 +62,7 @@ const PrivacyPolicy = () => {
           </div>
 
           <div className="mb-6">
-            <h2 className="text-2xl font-semibold text-gray-800 mb-4">
+            <h2 className="text-2xl max-sm:text-xl font-semibold text-gray-800 mb-4">
               Data Usage
             </h2>
             <p className="text-gray-700">
@@ -75,7 +77,7 @@ const PrivacyPolicy = () => {
           </div>
 
           <div className="mb-6">
-            <h2 className="text-2xl font-semibold text-gray-800 mb-4">
+            <h2 className="text-2xl max-sm:text-xl font-semibold text-gray-800 mb-4">
               Data Security
             </h2>
             <p className="text-gray-700">
@@ -88,7 +90,7 @@ const PrivacyPolicy = () => {
           </div>
 
           <div className="mb-6">
-            <h2 className="text-2xl font-semibold text-gray-800 mb-4">
+            <h2 className="text-2xl max-sm:text-xl font-semibold text-gray-800 mb-4">
               User Rights
             </h2>
             <p className="text-gray-700">

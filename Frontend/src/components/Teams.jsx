@@ -13,7 +13,7 @@ const Teams = () => {
           viewport={{ once: true, amount: 0.2 }}
           className="flex justify-center pb-2"
         >
-          <span class="text-primary font-bold text-2xl md:text-3xl relative inline-block stroke-current">
+          <span className="text-primary font-bold text-2xl md:text-3xl relative inline-block stroke-current">
             Our Teams
             <svg
               className="absolute -bottom-0.5 w-full max-h-1.5"
@@ -34,7 +34,7 @@ const Teams = () => {
           initial="hidden"
           whileInView={"show"}
           viewport={{ once: true, amount: 0.2 }}
-          className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4"
+          className="grid grid-cols-1 gap-8 max-sm:gap-0 sm:grid-cols-2 lg:grid-cols-4"
         >
           {teamMembers.map((member, index) => (
             <div

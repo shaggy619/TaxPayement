@@ -11,8 +11,28 @@ const Contact = () => {
   }, [location]);
 
   return (
-    <div className="flex items-center justify-center p-12 pt-48 max-md:pt-40 max-sm:px-6 ">
-      <div className="mx-auto w-full max-w-[550px] bg-white">
+    <div className="relative flex items-center justify-center p-12 pt-48 max-md:pt-40 max-sm:px-6 ">
+      <div className="absolute inset-0 overflow-hidden">
+        <svg
+          className="absolute top-10 left-0 transform -translate-x-1/2 -translate-y-1/2"
+          width="600"
+          height="600"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <circle cx="300" cy="300" r="300" fill="#3b82f6" fillOpacity="0.1" />
+        </svg>
+        <svg
+          className="absolute bottom-0 right-0 transform translate-x-1/2 translate-y-1/2"
+          width="500"
+          height="500"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <circle cx="250" cy="250" r="250" fill="#3d52a0" fillOpacity="0.1" />
+        </svg>
+      </div>
+      <div className="relative mx-auto w-full max-w-[550px]">
         <motion.h2
           variants={fadeIn("down", 0.2)}
           initial="hidden"
@@ -27,7 +47,7 @@ const Contact = () => {
           initial="hidden"
           whileInView={"show"}
           viewport={{ once: true, amount: 0.1 }}
-          className="shadow border border-stroke p-12 rounded max-sm:px-8"
+          className="shadow border border-stroke p-12 rounded max-sm:px-8 bg-white"
         >
           <div className="mb-5">
             <label className="mb-5 block text-base font-semibold text-primary sm:text-xl">

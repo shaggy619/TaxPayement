@@ -14,14 +14,14 @@ const Footer = () => {
                 <div className="flex items-center gap-2">
                   <img src="/img/nepgov.png" alt="Logo" className="h-16" />
                   <div className="max-sm:hidden">
-                    <h2 className="text-2xl font-medium ">Sawari Sadhan</h2>
+                    <h2 className="text-2xl font-medium ">iTax Nepal</h2>
                     <p className="text-sm">Digital Tax Payment Gateway</p>
                   </div>
                 </div>
               </Link>
             </div>
             <div>
-              <h3 className="text-xl font-semibold mb-2">Quick Links</h3>
+              <h3 className="text-xl font-semibold mb-2">Resources</h3>
               <ul>
                 <li className="pb-2">
                   <Link to="/registration-form">Registration Form</Link>
@@ -35,7 +35,7 @@ const Footer = () => {
               </ul>
             </div>
             <div>
-              <h3 className="text-xl font-semibold mb-2">Resources</h3>
+              <h3 className="text-xl font-semibold mb-2">Quick Links</h3>
               <ul>
                 <li className="pb-2">
                   <Link to="/faq">FAQ</Link>
@@ -58,7 +58,7 @@ const Footer = () => {
               </div>
               <div className="flex items-center gap-2 pb-2">
                 <MdMail className="text-lg" />
-                <p>Email: support@sawarisadhan.com</p>
+                <p>Email: support@itaxnpl.com</p>
               </div>
               <div className="flex items-center gap-2 pb-2">
                 <MdLocationOn className="text-xl" />
@@ -67,7 +67,7 @@ const Footer = () => {
             </div>
           </div>
           <div className="border-t border-gray-400 pt-4 text-center">
-            <p>© 2024 Sawari Sadhan. All rights reserved.</p>
+            <p>© 2024 iTax Nepal. All rights reserved.</p>
           </div>
         </div>
       </footer>

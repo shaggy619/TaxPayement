@@ -4,6 +4,8 @@ import { FiSearch } from "react-icons/fi";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [username, setUsername] = useState("Ram");
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -74,18 +76,34 @@ const Navbar = () => {
             <Link to="/contact-us" className="text-gray-800 hover:text-primary">
               Contact Us
             </Link>
-            <Link
-              to="/login"
-              className="text-white border border-transparent bg-primary px-8 py-2 rounded hover:bg-secondary"
-            >
-              Login
-            </Link>
-            <Link
-              to="/signup"
-              className="text-primary border border-primary bg-transparent px-8 py-2 rounded transition hover:border-primary hover:bg-primary hover:text-white"
-            >
-              Signup
-            </Link>
+            {isLoggedIn ? (
+              <Link
+                to="/profile"
+                className="flex items-center space-x-2 text-gray-800 hover:text-primary border border-slate-300 px-2 pl-4 py-1 rounded-full  hover:shadow-md hover:border-slate-400"
+              >
+                <span>Hi, {username}</span>
+                <img
+                  src="src/assets/avatar.png"
+                  alt="Profile"
+                  className="w-10 h-10 rounded-full"
+                />
+              </Link>
+            ) : (
+              <>
+                <Link
+                  to="/login"
+                  className="text-white border border-transparent bg-primary px-8 py-2 rounded hover:bg-secondary"
+                >
+                  Login
+                </Link>
+                <Link
+                  to="/signup"
+                  className="text-primary border border-primary bg-transparent px-8 py-2 rounded transition hover:border-primary hover:bg-primary hover:text-white"
+                >
+                  Signup
+                </Link>
+              </>
+            )}
           </div>
           <button
             className="lg:hidden text-gray-800 focus:outline-none"
@@ -124,6 +142,15 @@ const Navbar = () => {
             />
             <FiSearch className="mr-3 h-6 w-6 text-gray-400 absolute top-6 right-4" />
           </div>
+          {isLoggedIn && (
+            <Link
+              to="/profile"
+              className="block text-gray-800 hover:text-primary pl-4 pt-4"
+              onClick={closeMenu}
+            >
+              Profile
+            </Link>
+          )}
           <Link
             to="/about"
             className="block text-gray-800 hover:text-primary pl-4 pt-4"
@@ -138,24 +165,28 @@ const Navbar = () => {
           >
             Contact Us
           </Link>
-          <div className="pl-4 pt-6">
-            <Link
-              to="/login"
-              className="text-white border border-transparent bg-primary px-8 py-2 rounded hover:bg-secondary"
-              onClick={closeMenu}
-            >
-              Login
-            </Link>
-          </div>
-          <div className="pl-4 pt-8">
-            <Link
-              to="/signup"
-              className="text-primary border border-primary bg-white px-8 py-2 rounded hover:bg-secondary"
-              onClick={closeMenu}
-            >
-              Signup
-            </Link>
-          </div>
+          {!isLoggedIn && (
+            <>
+              <div className="pl-4 pt-6">
+                <Link
+                  to="/login"
+                  className="text-white border border-transparent bg-primary px-8 py-2 rounded hover:bg-secondary"
+                  onClick={closeMenu}
+                >
+                  Login
+                </Link>
+              </div>
+              <div className="pl-4 pt-8">
+                <Link
+                  to="/signup"
+                  className="text-primary border border-primary bg-white px-8 py-2 rounded hover:bg-secondary"
+                  onClick={closeMenu}
+                >
+                  Signup
+                </Link>
+              </div>
+            </>
+          )}
         </div>
       </nav>
     </header>

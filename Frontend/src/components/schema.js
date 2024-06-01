@@ -3,7 +3,7 @@ import * as yup from "yup";
 export const schema = yup.object().shape({
   name: yup.string().required("Required"),
   email: yup.string().required("Required").email("Invalid email Format"),
-  panNumber: yup
+  pannumber: yup
     .string()
     .required("Required")
     .min(10, "PAN No. should be exactly 10 digits"),
@@ -18,5 +18,6 @@ export const schema = yup.object().shape({
   userType: yup
     .string()
     .required("Required")
-    .oneOf(["individual", "company", "family"], "Invalid Selection"),
+    .oneOf(["resident", "company", "nonresident"], "Invalid Selection"),
+  yearlyIncome: yup.string().required("Required"),
 });

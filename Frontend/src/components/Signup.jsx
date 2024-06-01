@@ -11,7 +11,26 @@ import { useEffect } from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import useCustomToast from "../hooks/useCustomToast";
 import { schema } from "./schema";
+import {
+  useQuery,
+  useMutation,
+  useQueryClient,
+  QueryClient,
+  QueryClientProvider,
+} from "react-query";
 const SignUp = () => {
+  const { mutate } = useMutation({
+    mutationFn: async (signUpData) => {
+      const response = await fetch("http://localhost:5000/api/users/register", {
+        method: "POST", // Specify the method
+        // headers: {
+        //   "Content-Type": "application/json", // Set the content type header
+        // },
+        body: JSON.stringify(signUpData), // Send the signUpData as JSON in the request body
+      });
+    },
+  });
+
   const { successToast, errorToast } = useCustomToast();
 
   useEffect(() => {
@@ -32,22 +51,24 @@ const SignUp = () => {
     const result = await trigger([
       "name",
       "email",
-      "panNumber",
+      "pannumber",
       "password",
       "userType",
+      "yearlyIncome",
     ]);
     const formData = watch();
-    console.log(formData);
-    delete formData.panNumber;
-    const yearlyIncome = 2000;
-    const pannumber = 123456;
-    const panNumber = { yearlyIncome, pannumber };
+
+    const panNumber = {
+      pannumber: Number(formData.pannumber),
+      yearlyIncome: Number(formData.yearlyIncome),
+    };
+    delete formData.pannumber;
+    delete formData.yearlyIncome;
     const newFormData = { ...formData, panNumber };
-    console.log(newFormData);
+
     if (result) {
-      const formData = watch();
-      console.log(formData);
-      errorToast("API not working!! Check Console");
+      console.log(newFormData);
+      mutate(newFormData);
     }
   }
 
@@ -77,7 +98,7 @@ const SignUp = () => {
             </div>
             <div className="flex flex-col items-center">
               <div className="flex-1 w-full">
-                <div className="mb-12 mt-8 text-center border-b">
+                <div className="mt-8 mb-12 text-center border-b">
                   <div className="inline-block px-2 text-sm font-medium leading-none tracking-wide text-gray-600 transform translate-y-1/2 bg-white">
                     Sign Up with Email
                   </div>
@@ -117,7 +138,7 @@ const SignUp = () => {
                         className="w-full px-6 py-3 pl-10 text-base text-gray-700 placeholder-gray-500 bg-gray-100 border border-gray-200 rounded-md outline-none focus:border-primary focus:shadow-md focus:bg-white"
                         type="tel"
                         maxLength={10}
-                        {...register("panNumber")}
+                        {...register("pannumber")}
                         onInput={(e) => {
                           // This function ensures non-numeric characters are not entered
                           e.target.value = e.target.value.replace(
@@ -131,7 +152,7 @@ const SignUp = () => {
                       <FiPhone className="absolute text-xl text-gray-400 transform -translate-y-1/2 top-1/2 left-3" />
                     </div>
                     <p className={"error"}>
-                      {errors.panNumber && errors.panNumber.message}
+                      {errors.pannumber && errors.pannumber.message}
                     </p>
 
                     <div className="relative mt-5">
@@ -152,9 +173,11 @@ const SignUp = () => {
                         className="w-full px-6 py-3 pl-10 text-base text-gray-700 placeholder-gray-500 bg-gray-100 border border-gray-200 rounded-md outline-none focus:border-primary focus:shadow-md focus:bg-white"
                         type="number"
                         placeholder="Yearly Income"
+                        {...register("yearlyIncome")}
                       />
                       <PiMoneyWavy className="absolute text-xl text-gray-400 transform -translate-y-1/2 top-1/2 left-3" />
                     </div>
+                    <p className={"error"}>{errors?.yearlyIncome?.message}</p>
 
                     {/* <div className="relative mt-5">
                     <input
@@ -172,9 +195,9 @@ const SignUp = () => {
                         className="w-full px-6 py-3 pl-10 text-base text-gray-700 placeholder-gray-500 bg-gray-100 border border-gray-200 rounded-md outline-none cursor-pointer focus:border-primary focus:shadow-md focus:bg-white"
                       >
                         <option value="">Select Type</option>
-                        <option value="individual">Individual</option>
+                        <option value="resident">Individual</option>
                         <option value="company">Company</option>
-                        <option value="family">Family</option>
+                        <option value="nonresident">Family</option>
                       </select>
                       <PiGenderFemaleBold className="absolute text-xl text-gray-400 transform -translate-y-1/2 top-1/2 left-3" />
                     </div>

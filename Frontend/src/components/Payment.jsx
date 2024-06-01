@@ -48,7 +48,7 @@ const Payment = () => {
           Total Tax To be Paid
         </h2>
         <div className="flex items-center justify-between mb-8 px-4 py-2 bg-gray-100 rounded-md shadow-sm">
-          <span className="text-lg text-gray-600">Total Tax:</span>
+          <span className="text-lg text-gray-600">Total Tax: Rs. 24000</span>
         </div>
         <button
           onClick={handlePayment}

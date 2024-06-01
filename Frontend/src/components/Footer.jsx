@@ -24,7 +24,7 @@ const Footer = () => {
               <h3 className="text-xl font-semibold mb-2">Resources</h3>
               <ul>
                 <li className="pb-2">
-                  <Link to="/registration-form">Registration Form</Link>
+                  <Link to="/signup">Registration Form</Link>
                 </li>
                 <li className="pb-2">
                   <Link to="/tax-calculator">Tax Calculator</Link>

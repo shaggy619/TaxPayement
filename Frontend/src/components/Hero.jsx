@@ -29,7 +29,7 @@ const Hero = () => {
             </p>
 
             <Link
-              to="/sign-up"
+              to="/signup"
               className="group inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-white rounded bg-primary hover:bg-secondary border border-transparent max-sm:mb-2"
             >
               Get started
@@ -47,7 +47,7 @@ const Hero = () => {
               </svg>
             </Link>
             <Link
-              to="/services"
+              to="/about"
               className="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-primary border border-primary transition hover:border-primary hover:bg-primary hover:text-white rounded"
             >
               What We Do

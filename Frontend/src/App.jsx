@@ -10,6 +10,7 @@ import SignUp from "./components/Signup";
 import Faq from "./components/Faq";
 import PrivacyPolicy from "./components/PrivacyPolicy";
 import About from "./components/About";
+import TaxCalculator from "./components/TaxCalculator";
 
 const App = () => {
   return (
@@ -34,6 +35,7 @@ const App = () => {
                   path="/privacy-policy"
                   element={<PrivacyPolicy />}
                 />
+                <Route path="/tax-calculator" element={<TaxCalculator />} />
 
                 <Route exact path="*" element={<ErrorPage />} />
               </Routes>

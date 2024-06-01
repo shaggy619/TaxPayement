@@ -1,17 +1,60 @@
-import React from "react";
-import { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import { fadeIn } from "./varients";
 
 const Contact = () => {
   const location = useLocation();
+
+  const [formValues, setFormValues] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    message: "",
+  });
+
+  const [errors, setErrors] = useState({});
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location]);
 
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormValues({ ...formValues, [name]: value });
+  };
+
+  const validate = () => {
+    const errors = {};
+    if (!formValues.name) {
+      errors.name = "Full Name is required";
+    }
+    if (!formValues.phone) {
+      errors.phone = "Phone Number is required";
+    }
+    if (!formValues.email) {
+      errors.email = "Email Address is required";
+    } else if (!/\S+@\S+\.\S+/.test(formValues.email)) {
+      errors.email = "Email Address is invalid";
+    }
+    if (!formValues.message) {
+      errors.message = "Message is required";
+    }
+    return errors;
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const validationErrors = validate();
+    setErrors(validationErrors);
+
+    if (Object.keys(validationErrors).length === 0) {
+      console.log("Form submitted successfully", formValues);
+    }
+  };
+
   return (
-    <div className="relative flex items-center justify-center p-12 pt-48 max-md:pt-40 max-sm:px-6 ">
+    <div className="relative flex items-center justify-center p-12 pt-48 max-md:pt-40 max-sm:px-6">
       <div className="absolute inset-0 overflow-hidden">
         <svg
           className="absolute top-10 left-0 transform -translate-x-1/2 -translate-y-1/2"
@@ -43,6 +86,7 @@ const Contact = () => {
           Contact Us
         </motion.h2>
         <motion.form
+          onSubmit={handleSubmit}
           variants={fadeIn("up", 0.3)}
           initial="hidden"
           whileInView={"show"}
@@ -63,9 +107,16 @@ const Contact = () => {
               type="text"
               name="name"
               id="name"
+              value={formValues.name}
+              onChange={handleInputChange}
               placeholder="Full Name"
-              className="w-full rounded-md border border-gray-200 bg-white py-3 px-6 text-base text-gray-700 outline-none focus:border-primary focus:shadow-md"
+              className={`w-full rounded-md border ${
+                errors.name ? "border-red-500" : "border-gray-200"
+              } bg-white py-3 px-6 text-base text-gray-700 outline-none focus:border-primary focus:shadow-md`}
             />
+            {errors.name && (
+              <p className="text-red-500 text-sm mt-2">{errors.name}</p>
+            )}
           </div>
           <div className="mb-5">
             <label
@@ -78,9 +129,16 @@ const Contact = () => {
               type="tel"
               name="phone"
               id="phone"
+              value={formValues.phone}
+              onChange={handleInputChange}
               placeholder="Your phone number"
-              className="w-full rounded-md border border-gray-200 bg-white py-3 px-6 text-base text-gray-700 outline-none focus:border-primary focus:shadow-md"
+              className={`w-full rounded-md border ${
+                errors.phone ? "border-red-500" : "border-gray-200"
+              } bg-white py-3 px-6 text-base text-gray-700 outline-none focus:border-primary focus:shadow-md`}
             />
+            {errors.phone && (
+              <p className="text-red-500 text-sm mt-2">{errors.phone}</p>
+            )}
           </div>
           <div className="mb-5">
             <label
@@ -93,26 +151,43 @@ const Contact = () => {
               type="email"
               name="email"
               id="email"
+              value={formValues.email}
+              onChange={handleInputChange}
               placeholder="Enter Your email"
-              className="w-full rounded-md border border-gray-200 bg-white py-3 px-6 text-base text-gray-700 outline-none focus:border-primary focus:shadow-md"
+              className={`w-full rounded-md border ${
+                errors.email ? "border-red-500" : "border-gray-200"
+              } bg-white py-3 px-6 text-base text-gray-700 outline-none focus:border-primary focus:shadow-md`}
             />
+            {errors.email && (
+              <p className="text-red-500 text-sm mt-2">{errors.email}</p>
+            )}
           </div>
           <div className="mb-5">
             <label
-              htmlFor="review"
+              htmlFor="message"
               className="mb-3 block text-base font-medium text-dark"
             >
               Message
             </label>
             <textarea
-              id="review"
+              name="message"
+              id="message"
+              value={formValues.message}
+              onChange={handleInputChange}
               placeholder="Enter Your Message"
-              className="w-full rounded-md border border-gray-200 bg-white py-3 px-6 text-base text-gray-700 outline-none focus:border-primary focus:shadow-md"
+              className={`w-full rounded-md border ${
+                errors.message ? "border-red-500" : "border-gray-200"
+              } bg-white py-3 px-6 text-base text-gray-700 outline-none focus:border-primary focus:shadow-md`}
             />
+            {errors.message && (
+              <p className="text-red-500 text-sm mt-2">{errors.message}</p>
+            )}
           </div>
-
           <div>
-            <button className="hover:bg-secondary w-full rounded-md bg-primary py-3 px-8 text-center text-base font-semibold text-white outline-none">
+            <button
+              type="submit"
+              className="hover:bg-secondary w-full rounded-md bg-primary py-3 px-8 text-center text-base font-semibold text-white outline-none"
+            >
               Send Message
             </button>
           </div>

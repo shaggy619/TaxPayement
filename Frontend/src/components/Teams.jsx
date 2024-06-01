@@ -1,4 +1,4 @@
-import { FaFacebook, FaTwitter, FaLinkedin } from "react-icons/fa";
+import { FaFacebook, FaTwitter, FaLinkedin, FaGithub } from "react-icons/fa";
 import { motion } from "framer-motion";
 import { fadeIn } from "./varients";
 import { teamMembers } from "../data/TeamMembers";
@@ -55,7 +55,7 @@ const Teams = () => {
               <p className="text-gray-700">Role: {member.role}</p>
               <div className="flex justify-center mt-4">
                 <a
-                  href={`https://facebook.com/${member.social.facebook}`}
+                  href={`https://www.facebook.com/profile.php?id=${member.social.facebook}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="mr-4 text-xl text-gray-700 hover:text-primary"
@@ -71,12 +71,12 @@ const Teams = () => {
                   <FaTwitter />
                 </a>
                 <a
-                  href={`https://linkedin.com/in/${member.social.linkedin}`}
+                  href={`https://github.com/${member.social.github}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-xl text-gray-700 hover:text-primary"
                 >
-                  <FaLinkedin />
+                  <FaGithub />
                 </a>
               </div>
             </div>

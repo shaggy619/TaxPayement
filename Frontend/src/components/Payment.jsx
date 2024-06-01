@@ -10,11 +10,11 @@ const Payment = () => {
   };
 
   return (
-    <div className="max-w-2xl mx-4 sm:max-w-sm md:max-w-sm lg:max-w-sm xl:max-w-sm sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto bg-white shadow-xl rounded-lg text-gray-900 mt-36 mb-12">
+    <div className="max-w-2xl mx-4 sm:max-w-sm md:max-w-sm lg:max-w-sm xl:max-w-sm sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto bg-white shadow-xl rounded-lg text-gray-900 mt-40 mb-12">
       <div className="rounded-t-lg h-32 overflow-hidden">
         <img
           className="object-cover object-top w-full"
-          src="https://images.unsplash.com/photo-1549880338-65ddcdfd017b?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ"
+          src="https://i.pinimg.com/736x/3f/11/30/3f11304b704850cb6ad8e27e6a3a56cb.jpg"
           alt="Mountain"
         />
       </div>
@@ -29,7 +29,7 @@ const Payment = () => {
         <h2 className="font-semibold">Samyam Adhikari</h2>
         <p className="text-gray-500">Individual</p>
       </div>
-      <div className="w-[90%] mx-auto pb-8">
+      <div className="max-md:w-[90%] w-[85%] mx-auto pb-8">
         <h2 className="text-2xl font-semibold text-gray-800 my-6 text-center">
           Total Tax To be Paid
         </h2>

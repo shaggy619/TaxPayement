@@ -1,11 +1,11 @@
 import React from "react";
 import {
   FaUser,
-  FaBuilding,
   FaIndustry,
   FaHandsHelping,
   FaGlobe,
   FaFileInvoiceDollar,
+  FaHome,
 } from "react-icons/fa";
 import { motion } from "framer-motion";
 import { fadeIn } from "./varients";
@@ -18,10 +18,10 @@ const services = [
       "File your personal income tax returns with ease and accuracy.",
   },
   {
-    title: "Firm/LLP/AOP/BOP",
-    icon: <FaBuilding />,
+    title: "Family",
+    icon: <FaHome />,
     description:
-      "Manage tax compliance and filing for your firm, LLP, AOP, or BOP.",
+      "Get comprehensive tax management services tailored for families.",
   },
   {
     title: "Company",

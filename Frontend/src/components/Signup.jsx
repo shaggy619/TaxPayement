@@ -1,8 +1,8 @@
 import React from "react";
 import { MdOutlineEmail } from "react-icons/md";
 import { IoKeyOutline } from "react-icons/io5";
-import { FcGoogle } from "react-icons/fc";
 import { FiPhone } from "react-icons/fi";
+import { PiMoneyWavy } from "react-icons/pi";
 import { RxAvatar } from "react-icons/rx";
 import { PiGenderFemaleBold } from "react-icons/pi";
 import { useForm } from "react-hook-form";
@@ -139,6 +139,14 @@ const SignUp = () => {
                     <p className={"error"}>
                       {errors.password && errors.password.message}
                     </p>
+                    <div className="relative mt-5">
+                      <input
+                        className="w-full px-6 py-3 pl-10 text-base text-gray-700 placeholder-gray-500 bg-gray-100 border border-gray-200 rounded-md outline-none focus:border-primary focus:shadow-md focus:bg-white"
+                        type="number"
+                        placeholder="Yearly Income"
+                      />
+                      <PiMoneyWavy className="absolute text-xl text-gray-400 transform -translate-y-1/2 top-1/2 left-3" />
+                    </div>
 
                     {/* <div className="relative mt-5">
                     <input

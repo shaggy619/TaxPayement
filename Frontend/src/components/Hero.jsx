@@ -13,7 +13,7 @@ const Hero = () => {
             initial="hidden"
             whileInView={"show"}
             viewport={{ once: false, amount: 0.2 }}
-            className="mr-auto place-self-center lg:col-span-7"
+            className="mr-auto place-self-center lg:col-span-7 pr-4"
           >
             <h3 className="text-lg font-medium text-gray-600 pb-2 max-sm:text-center">
               Streamline Your Tax Payments

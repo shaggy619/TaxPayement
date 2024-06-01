@@ -11,6 +11,7 @@ import Faq from "./components/Faq";
 import PrivacyPolicy from "./components/PrivacyPolicy";
 import About from "./components/About";
 import TaxCalculator from "./components/TaxCalculator";
+import Payment from "./components/Payment";
 
 const App = () => {
   return (
@@ -36,6 +37,7 @@ const App = () => {
                   element={<PrivacyPolicy />}
                 />
                 <Route path="/tax-calculator" element={<TaxCalculator />} />
+                <Route path="/payment" element={<Payment />} />
 
                 <Route exact path="*" element={<ErrorPage />} />
               </Routes>

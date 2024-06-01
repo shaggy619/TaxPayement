@@ -1,4 +1,4 @@
-import { FaFacebook, FaTwitter, FaLinkedin } from "react-icons/fa";
+import { FaFacebook, FaTwitter, FaLinkedin, FaGithub } from "react-icons/fa";
 import { motion } from "framer-motion";
 import { fadeIn } from "./varients";
 import { teamMembers } from "../data/TeamMembers";
@@ -13,7 +13,7 @@ const Teams = () => {
           viewport={{ once: true, amount: 0.2 }}
           className="flex justify-center pb-2"
         >
-          <span class="text-primary font-bold text-2xl md:text-3xl relative inline-block stroke-current">
+          <span className="text-primary font-bold text-2xl md:text-3xl relative inline-block stroke-current">
             Our Teams
             <svg
               className="absolute -bottom-0.5 w-full max-h-1.5"
@@ -34,7 +34,7 @@ const Teams = () => {
           initial="hidden"
           whileInView={"show"}
           viewport={{ once: true, amount: 0.2 }}
-          className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4"
+          className="grid grid-cols-1 gap-8 max-sm:gap-0 sm:grid-cols-2 lg:grid-cols-4"
         >
           {teamMembers.map((member, index) => (
             <div
@@ -55,7 +55,7 @@ const Teams = () => {
               <p className="text-gray-700">Role: {member.role}</p>
               <div className="flex justify-center mt-4">
                 <a
-                  href={`https://facebook.com/${member.social.facebook}`}
+                  href={`https://www.facebook.com/profile.php?id=${member.social.facebook}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="mr-4 text-xl text-gray-700 hover:text-primary"
@@ -71,12 +71,12 @@ const Teams = () => {
                   <FaTwitter />
                 </a>
                 <a
-                  href={`https://linkedin.com/in/${member.social.linkedin}`}
+                  href={`https://github.com/${member.social.github}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-xl text-gray-700 hover:text-primary"
                 >
-                  <FaLinkedin />
+                  <FaGithub />
                 </a>
               </div>
             </div>

@@ -7,7 +7,7 @@ const Hero = () => {
   return (
     <>
       <section className="bg-white mt-28 max-sm:mt-22">
-        <div className="grid max-w-[90%]  py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
+        <div className="grid max-w-[90%] max-lg:pt-20 max-md:pt-16  py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
           <motion.div
             variants={fadeIn("up", 0.2)}
             initial="hidden"
@@ -29,7 +29,7 @@ const Hero = () => {
             </p>
 
             <Link
-              to="/sign-up"
+              to="/signup"
               className="group inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-white rounded bg-primary hover:bg-secondary border border-transparent max-sm:mb-2"
             >
               Get started
@@ -47,13 +47,13 @@ const Hero = () => {
               </svg>
             </Link>
             <Link
-              to="/services"
+              to="/about"
               className="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-primary border border-primary transition hover:border-primary hover:bg-primary hover:text-white rounded"
             >
               What We Do
             </Link>
           </motion.div>
-          <div className="max-lg:-order-1  max-sm:w-full max-lg:mx-auto max-lg:pb-12 lg:mt-0 lg:col-span-5 lg:flex">
+          <div className=" max-lg:hidden max-sm:w-full max-lg:mx-auto max-lg:pb-12 lg:mt-0 lg:col-span-5 lg:flex">
             <div className="w-full ">
               <div className="lg:ml-auto lg:text-right">
                 <div className="relative z-10 inline-block pt-11 lg:pt-0">

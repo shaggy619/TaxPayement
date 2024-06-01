@@ -70,14 +70,14 @@ const SignUp = () => {
                   alt="logo"
                 />
                 <h2 className="text-2xl font-medium text-primary">
-                  Sawari Sadhan
+                  iTax Nepal
                 </h2>
                 <p className="text-sm">Digital Tax Payment Gateway</p>
               </Link>
             </div>
-            <div className="flex flex-col items-center mt-8">
-              <div className="flex-1 w-full mt-8">
-                <div className="my-12 text-center border-b">
+            <div className="flex flex-col items-center">
+              <div className="flex-1 w-full">
+                <div className="mb-12 mt-8 text-center border-b">
                   <div className="inline-block px-2 text-sm font-medium leading-none tracking-wide text-gray-600 transform translate-y-1/2 bg-white">
                     Sign Up with Email
                   </div>
@@ -194,7 +194,7 @@ const SignUp = () => {
                     </button>
 
                     <p className="mt-6 text-xs text-center text-gray-600">
-                      By signing up, you agree to abide by Sawari Sadhan{" "}
+                      By signing up, you agree to abide by iTax Nepal{" "}
                       <a
                         href="#"
                         className="border-b border-gray-500 border-dotted"

@@ -7,6 +7,10 @@ import Footer from "./components/Footer";
 import Contact from "./components/Contact-Us";
 import Login from "./components/Login";
 import SignUp from "./components/Signup";
+import Faq from "./components/Faq";
+import PrivacyPolicy from "./components/PrivacyPolicy";
+import About from "./components/About";
+import TaxCalculator from "./components/TaxCalculator";
 
 const App = () => {
   return (
@@ -23,6 +27,16 @@ const App = () => {
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route exact path="/contact-us" element={<Contact />} />
+                <Route exact path="/faq" element={<Faq />} />
+                <Route exact path="/about" element={<About />} />
+
+                <Route
+                  exact
+                  path="/privacy-policy"
+                  element={<PrivacyPolicy />}
+                />
+                <Route path="/tax-calculator" element={<TaxCalculator />} />
+
                 <Route exact path="*" element={<ErrorPage />} />
               </Routes>
               <Footer />

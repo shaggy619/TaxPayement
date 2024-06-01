@@ -4,6 +4,8 @@ import { FiSearch } from "react-icons/fi";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [username, setUsername] = useState("Ram");
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -28,10 +30,10 @@ const Navbar = () => {
     <header className="fixed w-full top-0 left-0 z-50">
       <div className="bg-primary text-white text-center py-2">
         <p className="max-w-[90%] mx-auto text-sm">
-          Check Out the Updated Vehicle Tax Rates.{" "}
+          Check Income Tax Act 2058.{" "}
           <a
-            href="https://www.autoncell.com/detail/news/tax-rate-vehicles-fiscal-year-2076-2077-province-1-7"
-            target="_blank"
+            href="/src/assets/income-tax-act-2058.pdf"
+            download="income-tax-act-2058.pdf"
             className="underline"
           >
             Click Here!
@@ -49,7 +51,7 @@ const Navbar = () => {
               <img src="/img/nepgov.png" alt="Logo" className="h-16" />
               <div className="max-sm:hidden">
                 <h2 className="text-2xl font-medium text-primary">
-                  Sawari Sadhan
+                  iTax Nepal
                 </h2>
                 <p className="text-sm">Digital Tax Payment Gateway</p>
               </div>
@@ -61,7 +63,7 @@ const Navbar = () => {
               <input
                 type="text"
                 placeholder="Search..."
-                className="flex-grow border border-gray-300 rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
+                className="flex-grow border border-gray-400 rounded-full px-4 py-2 focus:outline-none focus:border focus:border-primary focus:shadow-md focus:bg-white bg-transparent"
               />
               <FiSearch className="ml-2 h-6 w-6 text-gray-400 absolute top-2 right-3" />
             </div>
@@ -74,18 +76,34 @@ const Navbar = () => {
             <Link to="/contact-us" className="text-gray-800 hover:text-primary">
               Contact Us
             </Link>
-            <Link
-              to="/login"
-              className="text-white border border-transparent bg-primary px-8 py-2 rounded hover:bg-secondary"
-            >
-              Login
-            </Link>
-            <Link
-              to="/signup"
-              className="text-primary border border-primary bg-transparent px-8 py-2 rounded transition hover:border-primary hover:bg-primary hover:text-white"
-            >
-              Signup
-            </Link>
+            {isLoggedIn ? (
+              <Link
+                to="/profile"
+                className="flex items-center space-x-2 text-gray-800 hover:text-primary border border-slate-300 px-2 pl-4 py-1 rounded-full  hover:shadow-md hover:border-slate-400"
+              >
+                <span>Hi, {username}</span>
+                <img
+                  src="src/assets/avatar.png"
+                  alt="Profile"
+                  className="w-10 h-10 rounded-full"
+                />
+              </Link>
+            ) : (
+              <>
+                <Link
+                  to="/login"
+                  className="text-white border border-transparent bg-primary px-8 py-2 rounded hover:bg-secondary"
+                >
+                  Login
+                </Link>
+                <Link
+                  to="/signup"
+                  className="text-primary border border-primary bg-transparent px-8 py-2 rounded transition hover:border-primary hover:bg-primary hover:text-white"
+                >
+                  Signup
+                </Link>
+              </>
+            )}
           </div>
           <button
             className="lg:hidden text-gray-800 focus:outline-none"
@@ -124,6 +142,15 @@ const Navbar = () => {
             />
             <FiSearch className="mr-3 h-6 w-6 text-gray-400 absolute top-6 right-4" />
           </div>
+          {isLoggedIn && (
+            <Link
+              to="/profile"
+              className="block text-gray-800 hover:text-primary pl-4 pt-4"
+              onClick={closeMenu}
+            >
+              Profile
+            </Link>
+          )}
           <Link
             to="/about"
             className="block text-gray-800 hover:text-primary pl-4 pt-4"
@@ -138,24 +165,28 @@ const Navbar = () => {
           >
             Contact Us
           </Link>
-          <div className="pl-4 pt-6">
-            <Link
-              to="/login"
-              className="text-white border border-transparent bg-primary px-8 py-2 rounded hover:bg-secondary"
-              onClick={closeMenu}
-            >
-              Login
-            </Link>
-          </div>
-          <div className="pl-4 pt-8">
-            <Link
-              to="/signup"
-              className="text-primary border border-primary bg-white px-8 py-2 rounded hover:bg-secondary"
-              onClick={closeMenu}
-            >
-              Signup
-            </Link>
-          </div>
+          {!isLoggedIn && (
+            <>
+              <div className="pl-4 pt-6">
+                <Link
+                  to="/login"
+                  className="text-white border border-transparent bg-primary px-8 py-2 rounded hover:bg-secondary"
+                  onClick={closeMenu}
+                >
+                  Login
+                </Link>
+              </div>
+              <div className="pl-4 pt-8">
+                <Link
+                  to="/signup"
+                  className="text-primary border border-primary bg-white px-8 py-2 rounded hover:bg-secondary"
+                  onClick={closeMenu}
+                >
+                  Signup
+                </Link>
+              </div>
+            </>
+          )}
         </div>
       </nav>
     </header>

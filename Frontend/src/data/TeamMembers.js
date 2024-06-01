@@ -1,14 +1,15 @@
 import sushant from "../assets/sushant.jpg";
 import samyam from "../assets/samyam.png";
+import srijan from "../assets/srijan.png";
 export const teamMembers = [
   {
     name: "Samyam Adhikari",
     role: "Frontend Developer",
     imgSrc: samyam,
     social: {
-      facebook: "john.doe",
-      twitter: "john_doe",
-      linkedin: "john-doe",
+      facebook: "100029505040818",
+      twitter: "SomeAim",
+      github: "shaggy619",
     },
   },
   {
@@ -16,9 +17,9 @@ export const teamMembers = [
     role: "Backend Developer",
     imgSrc: "https://spacema-dev.com/elevate/assets/images/team/1.jpg",
     social: {
-      facebook: "jane.smith",
+      facebook: "100009310013842",
       twitter: "jane_smith",
-      linkedin: "jane-smith",
+      github: "Ronish-Prajapati",
     },
   },
   {
@@ -26,19 +27,19 @@ export const teamMembers = [
     role: "Full Stack Developer",
     imgSrc: sushant,
     social: {
-      facebook: "alex.johnson",
+      facebook: "100086637275771",
       twitter: "alex_johnson",
-      linkedin: "alex-johnson",
+      github: "Sushant-Luitel",
     },
   },
   {
     name: "Srijan Ghimire",
     role: "Project Manager",
-    imgSrc: "https://spacema-dev.com/elevate/assets/images/team/2.jpg",
+    imgSrc: srijan,
     social: {
-      facebook: "peter.johnson",
+      facebook: "100005607961777",
       twitter: "peter_johnson",
-      linkedin: "peter-johnson",
+      github: "peter-johnson",
     },
   },
 ];

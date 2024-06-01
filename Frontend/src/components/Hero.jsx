@@ -50,7 +50,7 @@ const Hero = () => {
               to="/about"
               className="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-primary border border-primary transition hover:border-primary hover:bg-primary hover:text-white rounded"
             >
-              What We Do
+              About Us
             </Link>
           </motion.div>
           <div className=" max-lg:hidden max-sm:w-full max-lg:mx-auto max-lg:pb-12 lg:mt-0 lg:col-span-5 lg:flex">
@@ -64,9 +64,9 @@ const Hero = () => {
                     viewport={{ once: false, amount: 0.2 }}
                     src="/img/hero.png"
                     alt="hero"
-                    className="max-w-full "
+                    className="max-w-full"
                   />
-                  <span className="absolute -bottom-8 -left-8 z-[-1]">
+                  {/* <span className="absolute -bottom-8 -left-8 z-[-1]">
                     <motion.svg
                       variants={fadeIn("up", 0.2)}
                       initial="hidden"
@@ -104,7 +104,7 @@ const Hero = () => {
                       <circle cx="90.5" cy="68.5" r="2.5" fill="#3d52a0" />
                       <circle cx="90.5" cy="90.5" r="2.5" fill="#3d52a0" />
                     </motion.svg>
-                  </span>
+                  </span> */}
                 </div>
               </div>
             </div>

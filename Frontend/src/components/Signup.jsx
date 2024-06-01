@@ -6,11 +6,12 @@ import { PiMoneyWavy } from "react-icons/pi";
 import { RxAvatar } from "react-icons/rx";
 import { PiGenderFemaleBold } from "react-icons/pi";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import useCustomToast from "../hooks/useCustomToast";
 import { schema } from "./schema";
+import axios from "axios";
 import {
   useQuery,
   useMutation,
@@ -19,15 +20,26 @@ import {
   QueryClientProvider,
 } from "react-query";
 const SignUp = () => {
+  const navigate = useNavigate();
   const { mutate } = useMutation({
     mutationFn: async (signUpData) => {
-      const response = await fetch("http://localhost:5000/api/users/register", {
-        method: "POST", // Specify the method
-        // headers: {
-        //   "Content-Type": "application/json", // Set the content type header
-        // },
-        body: JSON.stringify(signUpData), // Send the signUpData as JSON in the request body
-      });
+      const response = await axios.post(
+        "http://localhost:5000/api/users/register",
+
+        signUpData,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+    },
+    onSuccess: () => {
+      successToast("User Registered");
+      navigate("/login");
+    },
+    onError: (res) => {
+      errorToast("User Already Exists");
     },
   });
 
@@ -137,7 +149,7 @@ const SignUp = () => {
                       <input
                         className="w-full px-6 py-3 pl-10 text-base text-gray-700 placeholder-gray-500 bg-gray-100 border border-gray-200 rounded-md outline-none focus:border-primary focus:shadow-md focus:bg-white"
                         type="tel"
-                        maxLength={10}
+                        maxLength={9}
                         {...register("pannumber")}
                         onInput={(e) => {
                           // This function ensures non-numeric characters are not entered
@@ -196,7 +208,7 @@ const SignUp = () => {
                       >
                         <option value="">Select Type</option>
                         <option value="resident">Individual</option>
-                        <option value="company">Company</option>
+                        <option value="business">Company</option>
                         <option value="nonresident">Family</option>
                       </select>
                       <PiGenderFemaleBold className="absolute text-xl text-gray-400 transform -translate-y-1/2 top-1/2 left-3" />

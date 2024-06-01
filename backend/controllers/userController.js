@@ -5,7 +5,7 @@ const bcrypt = require("bcrypt");
 
 exports.register = async (req, res) => {
   const { name, email, panNumber, password, userType } = req.body;
-
+  console.log(req);
   try {
     let user = await User.findOne({ email });
 

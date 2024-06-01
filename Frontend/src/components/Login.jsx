@@ -1,14 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
 import { MdOutlineEmail } from "react-icons/md";
 import { IoKeyOutline } from "react-icons/io5";
 import { FcGoogle } from "react-icons/fc";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
-
+import { useMutation } from "react-query";
+import axios from "axios";
+import useCustomToast from "../hooks/useCustomToast";
 const Login = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+  const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const { successToast, errorToast } = useCustomToast();
+
+  console.log(email, password);
+  const { mutate } = useMutation({
+    mutationFn: async (loginData) => {
+      const response = await axios.post(
+        "http://localhost:5000/api/users/login",
+        loginData
+      );
+    },
+    onSuccess: () => {
+      successToast("SUCCESS");
+      navigate("/");
+    },
+    onError: () => {
+      errorToast("Invalid Credentials");
+    },
+  });
+
   return (
     <section id="login">
       <div className="flex justify-center min-h-screen text-gray-900 bg-gray-100">
@@ -25,7 +49,7 @@ const Login = () => {
             </div>
             <div className="flex flex-col items-center">
               <div className="flex-1 w-full">
-                <div className="mb-12 mt-8 text-center border-b">
+                <div className="mt-8 mb-12 text-center border-b">
                   <div className="inline-block px-2 text-sm font-medium leading-none tracking-wide text-gray-600 transform translate-y-1/2 bg-white">
                     Sign In with Email
                   </div>
@@ -36,6 +60,8 @@ const Login = () => {
                     <input
                       className="w-full px-6 py-3 pl-10 text-base text-gray-700 placeholder-gray-500 bg-gray-100 border border-gray-200 rounded-md outline-none focus:border-primary focus:shadow-md focus:bg-white"
                       type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
                       placeholder="Email"
                     />
                     <MdOutlineEmail className="absolute text-xl text-gray-400 transform -translate-y-1/2 top-1/2 left-3" />
@@ -45,6 +71,8 @@ const Login = () => {
                     <input
                       className="w-full px-6 py-3 pl-10 text-base text-gray-700 placeholder-gray-500 bg-gray-100 border border-gray-200 rounded-md outline-none focus:border-primary focus:shadow-md focus:bg-white"
                       type="password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
                       placeholder="Password"
                     />
 
@@ -56,7 +84,10 @@ const Login = () => {
                     </Link>
                   </div>
 
-                  <button className="flex items-center justify-center w-full gap-2 py-4 mt-5 font-semibold tracking-wide text-white transition-all duration-300 ease-in-out rounded-lg bg-primary hover:bg-secondary focus:shadow-outline focus:outline-none">
+                  <button
+                    onClick={() => mutate({ email, password })}
+                    className="flex items-center justify-center w-full gap-2 py-4 mt-5 font-semibold tracking-wide text-white transition-all duration-300 ease-in-out rounded-lg bg-primary hover:bg-secondary focus:shadow-outline focus:outline-none"
+                  >
                     <svg
                       className="w-6 h-6 -ml-2"
                       fill="none"

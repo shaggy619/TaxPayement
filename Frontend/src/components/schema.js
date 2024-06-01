@@ -6,7 +6,7 @@ export const schema = yup.object().shape({
   pannumber: yup
     .string()
     .required("Required")
-    .min(10, "PAN No. should be exactly 10 digits"),
+    .min(9, "PAN No. should be exactly 9 digits"),
 
   password: yup
     .string()

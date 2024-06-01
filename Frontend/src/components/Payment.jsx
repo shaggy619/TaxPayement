@@ -1,26 +1,49 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FaMoneyCheckAlt } from "react-icons/fa";
 
 const Payment = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const handlePayment = () => {
     // Logic for Khalti payment integration can go here
   };
 
   return (
-    <div className="max-w-md mx-auto bg-white shadow-lg rounded-2xl p-8 my-36 mt-44">
-      <h1 className="text-3xl font-bold text-gray-800 mb-6 text-center">
-        Total Tax To be Paid
-      </h1>
-      <div className="flex items-center justify-between mb-8 px-4 py-2 bg-gray-100 rounded-md shadow-sm">
-        <span className="text-lg text-gray-600">Total Tax:</span>
+    <div className="max-w-2xl mx-4 sm:max-w-sm md:max-w-sm lg:max-w-sm xl:max-w-sm sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto bg-white shadow-xl rounded-lg text-gray-900 mt-36 mb-12">
+      <div className="rounded-t-lg h-32 overflow-hidden">
+        <img
+          className="object-cover object-top w-full"
+          src="https://images.unsplash.com/photo-1549880338-65ddcdfd017b?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ"
+          alt="Mountain"
+        />
       </div>
-      <button
-        onClick={handlePayment}
-        className="w-full flex items-center justify-center bg-primary hover:from-purple-700 hover:to-indigo-700 text-white font-bold py-3 px-6 rounded-full shadow-lg transition duration-300 transform hover:scale-[1.01]"
-      >
-        <FaMoneyCheckAlt className="mr-2" />
-        Pay with Khalti
-      </button>
+      <div className="mx-auto w-32 h-32 relative -mt-16 border-4 border-white rounded-full overflow-hidden">
+        <img
+          className="object-cover object-center h-32"
+          src="./src/assets/user.png"
+          alt="Woman looking front"
+        />
+      </div>
+      <div className="text-center mt-2">
+        <h2 className="font-semibold">Samyam Adhikari</h2>
+        <p className="text-gray-500">Individual</p>
+      </div>
+      <div className="w-[90%] mx-auto pb-8">
+        <h2 className="text-2xl font-semibold text-gray-800 my-6 text-center">
+          Total Tax To be Paid
+        </h2>
+        <div className="flex items-center justify-between mb-8 px-4 py-2 bg-gray-100 rounded-md shadow-sm">
+          <span className="text-lg text-gray-600">Total Tax:</span>
+        </div>
+        <button
+          onClick={handlePayment}
+          className="w-full flex items-center justify-center bg-primary  text-white font-semibold py-3 px-6 rounded-full shadow-lg transition duration-300 transform hover:scale-[1.01]"
+        >
+          <FaMoneyCheckAlt className="mr-2" />
+          Pay with Khalti
+        </button>
+      </div>
     </div>
   );
 };

@@ -36,6 +36,14 @@ const SignUp = () => {
       "password",
       "userType",
     ]);
+    const formData = watch();
+    console.log(formData);
+    delete formData.panNumber;
+    const yearlyIncome = 2000;
+    const pannumber = 123456;
+    const panNumber = { yearlyIncome, pannumber };
+    const newFormData = { ...formData, panNumber };
+    console.log(newFormData);
     if (result) {
       const formData = watch();
       console.log(formData);

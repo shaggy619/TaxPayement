@@ -5,7 +5,6 @@ import { FiSearch } from "react-icons/fi";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [username, setUsername] = useState("Ram");
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -78,15 +77,10 @@ const Navbar = () => {
             </Link>
             {isLoggedIn ? (
               <Link
-                to="/profile"
-                className="flex items-center space-x-2 text-gray-800 hover:text-primary border border-slate-300 px-2 pl-4 py-1 rounded-full  hover:shadow-md hover:border-slate-400"
+                to="/payment"
+                className="text-white border border-transparent bg-primary px-8 py-2 rounded hover:bg-secondary"
               >
-                <span>Hi, {username}</span>
-                <img
-                  src="src/assets/avatar.png"
-                  alt="Profile"
-                  className="w-10 h-10 rounded-full"
-                />
+                Pay Tax
               </Link>
             ) : (
               <>

@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  FaUser,
-  FaIndustry,
-  FaHandsHelping,
-  FaGlobe,
-  FaFileInvoiceDollar,
-  FaHome,
-} from "react-icons/fa";
+import { FaHandsHelping, FaFileInvoiceDollar, FaHome } from "react-icons/fa";
 import { motion } from "framer-motion";
 import { fadeIn } from "./varients";
 
